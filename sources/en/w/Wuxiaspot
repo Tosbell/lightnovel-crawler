@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+import logging
+
+from lncrawl.templates.novelfull import WuxiaSpotTemplate
+
+logger = logging.getLogger(__name__)
+
+
+class WuxiaSpotCrawler(WuxiaSpotTemplate):
+    base_url = [
+        "https://www.wuxiaspot.com",
+    ]
+
+    def initialize(self) -> None:
+        self.cleaner.bad_css.update(
+            [
+                'div[align="left"]',
+                'img[src*="proxy?container=focus"]',
+            ]
+        )
